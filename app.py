@@ -1,6 +1,8 @@
 from flask import Flask, Blueprint, render_template, flash, request, redirect
 from requests import get
+from urllib.parse import quote_plus, unquote_plus
 from pyperclip import copy
+
 app=Flask(__name__)
 app.config['SECRET_KEY']='iureyu48783d#8*#^37489xnhkc'
 url=Blueprint('urls',__name__)
@@ -14,6 +16,7 @@ def shortener():
 	if request.method=='POST':
 		longurl=request.form.get('longurl')
 		name=request.form.get('name')
+		longurl=quote_plus('https://pm-redirector.blogspot.com/?url=' + unquote_plus(longurl))
 		if name=='':
 			api_url=f"https://cutt.ly/api/api.php?key=667cc3506cc77adad0b8503f2dfc8a2121930&short={longurl}"
 		else:
