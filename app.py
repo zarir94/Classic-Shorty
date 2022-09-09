@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, flash, request, redirect
-from requests import get
 from urllib.parse import quote_plus, unquote_plus
+from requests import get
 from pyperclip import copy
 
 app=Flask(__name__)
