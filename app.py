@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, render_template, flash, request, redirect
 from urllib.parse import quote_plus, unquote_plus
 from requests import get
 from pyperclip import copy
-import os
+import os, sys, platform
 
 app=Flask(__name__)
 app.config['SECRET_KEY']='iureyu48783d#8*#^37489xnhkc'
@@ -51,7 +51,7 @@ def result():
 
 @url.route('/test')
 def test_page():
-	return os.name
+	return f"{os.name}\n{sys.platform}\n{platform.platform()}"
 
 
 app.register_blueprint(url,url_prefix='/')
